@@ -51,7 +51,7 @@ class ClsApprovisionnement {
         $con = new db_connection();
         $connect = $con->openconnection();
         try {
-            $stmt = $connect->prepare(" SELECT * FROM approvisionnement WHERE id_approvisionnement=? ");
+            $stmt = $connect->prepare(" SELECT * FROM vapprovisionnement WHERE id_approvisionnement=? ");
             $stmt->bindParam(1, $this->CODEAPPROVISIONNEMENT, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll();

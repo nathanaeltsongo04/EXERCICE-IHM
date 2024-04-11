@@ -1,7 +1,7 @@
 <div class="app-sidebar ">
     <div class="sidebar-header bg-secondary">
-        <a class="header-brand" href="../index.php">
-            <span class="text text-white">Gestion de Stock</span>
+        <a class="header-brand" href="../page/dashboard.php">
+            <span class="text text-white">Stock Manager</span>
         </a>
         <!-- <button type="button" class="nav-toggle"><i data-toggle="expanded"
                 class="ik ik-toggle-right toggle-icon"></i></button>
@@ -13,7 +13,7 @@
             <nav id="main-menu-navigation" class="navigation-main fw-bold ">
 
                 <div class="nav-item ">
-                    <a href="../index.php"><i class="fa fa-dashboard"></i><span><b>Tableau de Bord</b></span></a>
+                    <a href="../page/dashboard.php"><i class="fa fa-dashboard"></i><span><b>Tableau de Bord</b></span></a>
                 </div>
                 <!-- <div class="nav-lavel bg-secondary"></div> -->
                 <div class="nav-item">

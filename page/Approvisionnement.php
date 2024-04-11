@@ -97,9 +97,7 @@
                                                 <td><span data-id='<?= $val['id_approvisionnement'] ?>'
                                                         class="badge elementinfo "><i
                                                             class="fa fa-edit text-success fa-xl "></i></span>
-                                                    <span data-id='<?= $val['id_approvisionnement'] ?>'
-                                                        class="badge  elementinfo "><i
-                                                            class="fa fa-trash-can text-danger fa-xl "></i></span>
+                                                    
                                                 </td>
                                             </tr>
                                             <?php
@@ -176,79 +174,44 @@
 
         <!-- MODAL MODIFICATION -->
         <!-- Modal -->
-        <div class="modal fade" id="Modalmodification" tabindex="-1" role="dialog"
-            aria-labelledby="ModalmodificationTitle" aria-hidden="true">
+        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modifier un fournisseur</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modifier Approvisionnement</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <form class="row g-3" method="POST" action="../process/AddClient.php">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="modal-body">
-                                        <div class="row justify-content-center">
-                                            <div class=" col-md-6 form-group mt-3 ">
-                                                <div class="input-group has-validation">
-                                                    <input type="text" name="noms" class="form-control" id="noms"
-                                                        placeholder="Noms" required>
-                                                </div>
-                                            </div>
-                                            <div class=" col-md-6 form-group mt-3 ">
-                                                <div class="input-group has-validation">
-                                                    <input type="text" name="telephone" class="form-control"
-                                                        id="telephone" placeholder="Téléphone" required>
-                                                </div>
-                                            </div>
-                                            <div class=" col-md-6 form-group mt-3 ">
-                                                <div class="input-group has-validation">
-                                                    <input type="text" name="adresse" class="form-control" id="adresse"
-                                                        placeholder="Adresse" required>
-                                                </div>
-                                            </div>
-                                            <div class=" col-md-6 form-group mt-3 ">
-                                                <div class="input-group has-validation">
-                                                    <input type="text" name="mail" class="form-control" id="mail"
-                                                        placeholder="Adresse mail" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 text-center">
-                                                <button name="save" class="btn btn-primary w-50 fw-bold"
-                                                    type="submit">Enregistrer</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="modal-body modification">                      
+                                                                          
+
+                                            
+                        
                     </div>
 
                 </div>
             </div>
         </div>
-        </div>
-        </div>
+
         <!-- =====================================FORMULAIRE DE MODIFICATION UNITE=============================-->
 
         <!-- ==== SCRIPT POUR CHARGER LE CORP DU MODAL #exampleModalmodification ===-->
         <script type='text/javascript'>
         $(document).ready(function() {
             $('.elementinfo').click(function() {
-                var codeclient = $(this).data('id');
+                var codeApprov = $(this).data('id');
 
                 $.ajax({
-                    url: '../process/class/ClsFournisseur.php',
+                    url: '../process/Load/LdApprovisionnement.php',
                     type: 'POST',
                     data: {
-                        codeclient: codeclient
+                        codeApprov: codeApprov
                     },
                     success: function(response) {
                         $('.modification').html(response);
-                        $('#Modalmodification').modal('show');
+                        $('#exampleModalCenter1').modal('show');
                     }
 
                 })

@@ -141,6 +141,13 @@
                                                     <td colspan="7" style="text-align:right; font-weight: bold;font-size:18px;">
                                                         <?php echo $out ?></td>
                                                 </tr>
+                                                <?php
+                                                $lienURL ='../rapports/rapportVente.php?datedebut='.urlencode($_GET['datedebut']).'&datefin='.urlencode($_GET['datefin']).''; 
+                                            ?>
+                                                <a href="<?php echo  $lienURL ?>"
+                                                        data-toggle="tooltip" data-placement="top" title="Imprimer"
+                                                        class="badge btn btn-primary float-right"><i class="fa fa-print text-dark fa-xl"></i>Imprimer</a>
+                                            
                                         <?php
                                             } catch (PDOException $e) {
                                                 echo "Erreur : " . $e->getMessage();

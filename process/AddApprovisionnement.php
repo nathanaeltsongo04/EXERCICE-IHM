@@ -24,17 +24,17 @@ if (isset($_POST['saveApprov'])) {
     } catch (Exception $e) {
         return $e;
     }
-} elseif (isset($_POST['update'])) {
+} elseif (isset($_POST['updateApprov'])) {
     try {
-        // $data->setCODEFOURNISSEUR($_POST['codefournisseur']);
-        // $data->setNOMFOURNISSEUR(ucwords($_POST['noms']));
+        $data->setCODEAPPROVISIONNEMENT($_POST['codeApprov']);
+        $data->setFOURNISSEUR(ucwords($_POST['fournisseur']));
         // $data->setTELEPHONEFOURNISSEUR(ucwords($_POST['telephone']));
         // $data->setADRESSEFOURNISSEUR(ucwords($_POST['adresse']));
         // $data->setMAILFOURNISSEUR(ucwords($_POST['mail']));
         //$data->setTELEPHONEFOURNISSEUR(strtoupper($_POST['sigle']));
         //$data->setAuteur(ucwords($auteur));
-        // $data->MODIFIER();
-        // header('location:../page/Fournisseur.php?msg=true&info=Added Successfully');
+        $data->AJOUT();
+        header('location:../page/Approvisionnement.php?msg=true&info=Added Successfully');
     } catch (Exception $e) {
         return $e;
     }

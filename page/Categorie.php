@@ -146,8 +146,8 @@
                                             </div>
 
                                             <div class="col-md-12 text-center">
-                                                <button name="saveCat" class="btn btn-success w-50 fw-bold"
-                                                    type="submit">Modifier</button>
+                                                <button name="saveCat" class="btn btn-primary w-50 fw-bold"
+                                                    type="submit">Ajouter</button>
                                             </div>
                                         </div>
                                     </div>

@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer fixed-bottom ">
     <div class="w-100 clearfix">
         <span class="text-center text-sm-left d-md-inline-block">Copyright © <?php echo date("Y"); ?> Gestion Stock
             v1.0. All
