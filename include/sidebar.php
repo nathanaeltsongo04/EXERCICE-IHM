@@ -158,7 +158,8 @@ if ($_SESSION['SERVICE'] == "Admin") {
                             class="fa fa-people-group fa-1x"></i><span>Clients</span></a>
                 </div>
                 <div class="nav-item has-sub">
-                    <a href="#"><i class="fa fa-table-cells-large "></i><span>Rapports</span></a>
+                    <a href="#"><i class="fa fa-table-cells-large "
+                            style="color: #3CA788;"></i><span>Rapports</span></a>
                     <div class="submenu-content">
                         <a href="../page/DetailVente.php" class="menu-item">Facture</a>
                         <a href="../page/rapportVente.php" class="menu-item">Vente</a>

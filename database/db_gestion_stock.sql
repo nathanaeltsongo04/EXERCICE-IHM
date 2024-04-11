@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 11 avr. 2024 à 00:02
+-- Généré le : jeu. 11 avr. 2024 à 23:08
 -- Version du serveur : 10.4.28-MariaDB
 -- Version de PHP : 8.2.4
 
@@ -240,7 +240,8 @@ INSERT INTO `approvisionnement` (`id_approvisionnement`, `fournisseur_id`, `date
 (2, 1, '2024-02-03'),
 (3, 1, '2024-02-07'),
 (4, 4, '2024-02-11'),
-(5, 3, '2024-04-07');
+(5, 3, '2024-04-07'),
+(6, 0, '2024-04-11');
 
 -- --------------------------------------------------------
 
@@ -415,7 +416,9 @@ CREATE TABLE `tcompte` (
 --
 
 INSERT INTO `tcompte` (`CODECOMPTE`, `UTILISATEUR`, `NOMUTILISATEUR`, `MOTDEPASSE`) VALUES
-(1, 1, 'admin', 'admin');
+(1, 1, 'admin', 'admin'),
+(2, 3, 'Jean', '10'),
+(3, 2, 'Samuel', '10');
 
 -- --------------------------------------------------------
 
@@ -460,11 +463,9 @@ CREATE TABLE `tservice` (
 --
 
 INSERT INTO `tservice` (`CODESERVICE`, `DESIGNATION`) VALUES
-(1, 'Administration'),
-(2, 'Facturation'),
-(3, 'Comptabilité'),
-(4, 'Caisse'),
-(5, 'Réception');
+(1, 'Admin'),
+(2, 'Simple User'),
+(3, 'User');
 
 -- --------------------------------------------------------
 
@@ -486,7 +487,8 @@ CREATE TABLE `tutilisateur` (
 
 INSERT INTO `tutilisateur` (`CODEUTILISATEUR`, `NOM`, `POSTNOM`, `PRENOM`, `SERVICE`) VALUES
 (1, 'Mumbere', 'Tsongo', 'Nathanael', 1),
-(2, 'Samuel', 'Mbikamboli', 'MK', 2);
+(2, 'Samuel', 'Mbikamboli', 'MK', 2),
+(3, 'Jean-Louis', 'Ciza', 'Aganze', 3);
 
 -- --------------------------------------------------------
 
@@ -756,7 +758,7 @@ ALTER TABLE `vente`
 -- AUTO_INCREMENT pour la table `approvisionnement`
 --
 ALTER TABLE `approvisionnement`
-  MODIFY `id_approvisionnement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_approvisionnement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `categorieproduit`
@@ -798,7 +800,7 @@ ALTER TABLE `tclient`
 -- AUTO_INCREMENT pour la table `tcompte`
 --
 ALTER TABLE `tcompte`
-  MODIFY `CODECOMPTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CODECOMPTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `tfournisseur`
@@ -810,13 +812,13 @@ ALTER TABLE `tfournisseur`
 -- AUTO_INCREMENT pour la table `tservice`
 --
 ALTER TABLE `tservice`
-  MODIFY `CODESERVICE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CODESERVICE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `tutilisateur`
 --
 ALTER TABLE `tutilisateur`
-  MODIFY `CODEUTILISATEUR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CODEUTILISATEUR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `vente`
