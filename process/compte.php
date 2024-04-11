@@ -37,7 +37,7 @@ if (isset($_POST['save'])) {
                     $data->setMotdepasse($_POST['password']);
 
                     $data->inserer();
-                    header('location:../index.php?msg=true&info=Created Successfully');
+                    header('location:../page/authentification.php?msg=true&info=Created Successfully');
                     exit();
                 } catch (Exception $e) {
                     return $e->getMessage();
