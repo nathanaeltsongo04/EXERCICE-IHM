@@ -13,11 +13,11 @@
         </div>
         <div class="top-menu d-flex align-items-center">
             <div class="dropdown mr-4">
-                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="img/user.jpg" alt="">
-
-                </a>
+                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"><i fa
+                        class="fa fa-user-circle fa-2x text-secondary"></i></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item text-success hover-0 "><i class=" fa fa-user-circle fa-xl"></i><b>
+                    <a class="dropdown-item text-success hover-0 "><i class=" fa fa-user-circle fa-xxl"></i><b>
                             <?= $_SESSION["postnom"] . " " . $_SESSION["prenom"] ?></b>
                     </a>
                     <a class="dropdown-item" disabled href=""><i class="ik ik-user dropdown-icon"></i>

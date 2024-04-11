@@ -5,16 +5,11 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Se Connecter | Authentification</title>
-        <?php
-    include('../include/head.php');
-    ?>
-
-
+        <?php include('../include/head.php'); ?>
     </head>
 
     <body>
-        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'true') {
-    ?>
+        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'true') { ?>
         <script>
         Swal.fire({
             position: 'center',
@@ -46,12 +41,11 @@
         <div class="auth-wrapper">
             <div class="container-fluid h-100">
                 <div class="row flex-row h-100 bg-white">
-
                     <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-xl-6 col-lg-6 col-md-6 my-auto p-0">
                                 <div class="authentication-form mx-auto">
-                                    <h2 class="text-center mb-4"><b>Gestion De Stock</b></h2>
+                                    <h2 class="text-center mb-4"><b style="color:#00684A;">Gestion De Stock</b></h2>
                                     <div class="text-center mb-2">
                                         <h4>Authentification</h4>
                                     </div>
@@ -59,27 +53,28 @@
                                         <div class="form-group mt-4">
                                             <input name="nomdutilisateur" type="text" class="form-control"
                                                 placeholder="Nom d'Utilisateur" required="">
-                                            <i class="fa fa-user-circle"></i>
+                                            <i class="fa fa-user-circle" style="color:#00684A;"></i>
                                         </div>
                                         <div class="form-group mt-4">
                                             <input type="password" name="password" class="form-control"
                                                 placeholder="Mot de passe" required="">
-                                            <i class="fa fa-lock"></i>
+                                            <i class="fa fa-lock" style="color:#00684A;"></i>
                                         </div>
                                         <div class="sign-btn text-center ">
-                                            <button type="submit" name="connecter" class="btn btn-dark "><b>Se
+                                            <button style="background-color:#00684A;" type="submit" name="connecter"
+                                                class="btn text-white "><b>Se
                                                     Connecter</b></button>
                                         </div>
                                     </form>
                                     <div class="register">
-                                        <p>Je n'ai pas de Compte? <a href="../page/newaccount.php"
-                                                class="text-secondary"><b>Créer un compte</b></a></p>
+                                        <p class="fw-bold">Je n'ai pas de Compte? <a href="../page/newaccount.php"
+                                                class=""><b style="color:#00684A;">Créer un compte</b></a>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

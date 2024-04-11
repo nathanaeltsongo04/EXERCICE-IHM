@@ -13,6 +13,7 @@
     $data = new services();
     $all = $data->afficher();
     ?>
+    </head>
 
     <body>
         <?php if (isset($_GET['msg']) && $_GET['msg'] == 'true') {

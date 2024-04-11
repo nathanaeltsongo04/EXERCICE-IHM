@@ -24,7 +24,7 @@
             location.replace('newaccount.php');
         });
         </script>
-        <?php } else if (isset($_GET['msg'])&& $_GET['msg'] == 'false') { ?>
+        <?php } else if (isset($_GET['msg']) && $_GET['msg'] == 'false') { ?>
         <script>
         Swal.fire({
             position: 'center',
@@ -49,38 +49,38 @@
                         <div class="row justify-content-center">
                             <div class="col-xl-6 col-lg-6 col-md-6 my-auto p-0">
                                 <div class="authentication-form mx-auto">
-                                    <div class="text-center mb-4">
-                                        <h4><b>Créer Votre Compte</b></h4>
+                                    <div class="text-center text-primary mb-4">
+                                        <h4><b style="color:#00684A;">Créer Votre Compte</b></h4>
                                     </div>
                                     <form action="../process/compte.php" method="POST">
                                         <div class="form-group mt-2">
                                             <input name="matricule" type="text" class="form-control"
                                                 placeholder="Matricule" required="">
-                                            <i class="fa fa-id-badge "></i>
+                                            <i class="fa fa-id-badge " style="color:#00684A;"></i>
                                         </div>
                                         <div class="form-group mt-2">
                                             <input name="nomdutilisateur" type="text" class="form-control"
                                                 placeholder="Nom d'Utilisateur" required="">
-                                            <i class="fa fa-user-circle"></i>
+                                            <i class="fa fa-user-circle" style="color:#00684A;"></i>
 
                                         </div>
                                         <div class="form-group mt-2">
                                             <input name="password" type="password" class="form-control"
                                                 placeholder="Mot de passe" required="">
-                                            <i class="fa fa-lock"></i>
+                                            <i class="fa fa-lock" style="color:#00684A;"></i>
                                         </div>
                                         <div class="form-group mt-2 ">
                                             <input name="confirmpassword" type="password" class="form-control"
                                                 placeholder="Confirmer Mot de passe" required="">
-                                            <i class="fa fa-check "></i>
+                                            <i class="fa fa-check " style="color:#00684A;"></i>
                                         </div>
                                         <div class="form-group mt-2 text-center">
-                                            <button type="submit" name="save"
-                                                class="btn btn-dark "><b>Créer</b></button>
+                                            <button style="background-color:#00684A;" type="submit" name="save"
+                                                class="btn text-white "><b>Créer</b></button>
                                         </div>
                                         <div class="form-group mt-2 text-center">
-                                            <p>J'ai un Compte? <a href="../page/authentification.php"
-                                                    class="text-secondary"><b>Se Connecter</b></a></p>
+                                            <p class="fw-bold">J'ai un Compte? <a href="../page/authentification.php"
+                                                    class=""><b style="color:#00684A;">Se Connecter</b></a></p>
                                         </div>
 
                                     </form>

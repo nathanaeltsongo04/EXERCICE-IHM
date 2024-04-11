@@ -1,0 +1,10 @@
+/* Couleur du lien */
+.list-item {
+    color: #000; /* Couleur du lien par défaut */
+    transition: color 0.3s; /* Animation de transition pour la couleur */
+}
+
+/* Effet de survol */
+.list-item:hover {
+    color: #f00; /* Nouvelle couleur de lien au survol */
+}
