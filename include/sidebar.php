@@ -130,7 +130,7 @@ if ($_SESSION['SERVICE'] == "Admin") {
     </div>
 </div>
 <?php
-} else if ($_SESSION[''] == 'Simple User') {
+} else if ($_SESSION['SERVICE'] == 'Simple User') {
 ?>
 <div class="app-sidebar">
     <div class="sidebar-header" style="background-color: #00684A;">
