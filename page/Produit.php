@@ -58,8 +58,9 @@
                                     </div>
                                     <div class=" float-right px-4">
                                         <!-- Button trigger modal -->
-                                        <a class="text-primary" data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                class="fa solid fa-plus-circle fa-xl"> </i> <span><b>Ajouter
+                                        <a class="text-primary" href="" data-toggle="modal"
+                                            data-target="#exampleModalCenter"><i class="fa solid fa-plus-circle fa-xl">
+                                            </i> <span><b>Ajouter
                                                     Produit</b>
                                             </span></a>
                                     </div>
@@ -168,14 +169,16 @@
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" name="quantite" class="form-control"
-                                                        id="quantite" placeholder="Quantité" required>
+                                                    <input type="number" min="0" step="0.01" name="quantite"
+                                                        class="form-control" id="quantite" placeholder="Quantité"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" name="prix" class="form-control" id="prix"
-                                                        placeholder="Prix unitaire" required>
+                                                    <input type="number" min="0" step="0.01" name="prix"
+                                                        class="form-control" id="prix" placeholder="Prix unitaire"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 text-center">
