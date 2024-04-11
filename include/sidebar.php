@@ -8,8 +8,8 @@
         <button id="sidebarClose" class="nav-close"><i class="ik ik-x"></i></button> -->
     </div>
 
-    <div class="sidebar-content ">
-        <div class="nav-container">
+    <div class="sidebar-content">
+        <div class="nav-container ">
             <nav id="main-menu-navigation" class="navigation-main fw-bold ">
 
                 <div class="nav-item ">

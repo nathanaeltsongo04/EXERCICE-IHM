@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Produit</title>
+        <title>Accueil</title>
         <?php
     include '../include/head.php';
     require('../database/db_connection.php');
