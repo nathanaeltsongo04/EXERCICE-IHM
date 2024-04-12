@@ -16,7 +16,7 @@
     // $data2 = new ClsVente();
     // $data1 = new ClsProduit();
 
-    $all = $data->afficher();
+    $all = $data->fichestock();
     // $all1 = $data1->afficher();
     // $all2 = $data2->afficher();
 
@@ -59,16 +59,10 @@
 
                             <div class="col col-sm-12">
                                 <div class="card-options d-inline-block">
-                                    <h4><b>Mouvements Stock</b></h4>
+                                    <h4><b>Fiche Stock</b></h4>
                                 </div>
                                 <div class=" float-right px-4">
-                                        <!-- Button trigger modal -->
                                         
-                                        <div class="float-right px-4">                                            
-                                            <a class="text-info mr-4" href="Fichestock.php"><i class="fa solid fa-file fa-xl"> </i> <span><b>Fiche de stock
-                                                </b>
-                                            </span></a>
-                                        </div>
                                 </div>
                             </div>
                         </div>
@@ -79,10 +73,10 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Produit</th>
-                                            <th>Quantite</th>
-                                            <th>Prix unitaire</th>
-                                            <th>Operation</th>
-                                            <th>Date Operation</th>
+                                            <th>Stock Entré</th>
+                                            <th>Stock Sorti</th>
+                                            <th>Stock Actuel</th>
+                                            <th>Action</th>
 
                                         </tr>
                                     </thead>
@@ -94,11 +88,15 @@
                                             <tr>
 
                                                 <th scope="row"><b><?= $numero ?></b></th>
-                                                <td><b><?= $val['produit'] ?></b></td>
-                                                <td><b><?= $val['quantite'] ?></b></td>
-                                                <td><b><?= $val['prixu'] ?></b></td>
-                                                <td><b><?= $val['type_operation'] ?></b></td>
-                                                <td><b><?= $val['dateoperation'] ?></b></td>
+                                                <td><b><?= $val['Produit'] ?></b></td>
+                                                <td><b><?= $val['stock_entree'] ?></b></td>
+                                                <td><b><?= $val['stock_sortie'] ?></b></td>
+                                                <td><b><?= $val['StockActuel'] ?></b></td>
+                                                <th><b>
+                                                <a href="../rapports/fichedestock.php?Produit=<?= $val['Produit'] ?>"
+                                                        data-toggle="tooltip" data-placement="top" title="Imprimer"
+                                                        class="badge"><i class="fa fa-print text-dark fa-xl"></i></a>
+                                                </b></th>
 
                                             </tr>
                                         <?php
@@ -110,11 +108,10 @@
                                         <tr>
                                             <th>#</th>
                                             <th>Produit</th>
-                                            <th>Quantite</th>
-                                            <th>Prix unitaire</th>
-                                            <th>Operation</th>
-                                            <th>Date Operation</th>
-
+                                            <th>Stock Entré</th>
+                                            <th>Stock Sorti</th>
+                                            <th>Stock Actuel</th>
+                                            <th>Action</th>
                                         </tr>
                                     </tfoot>
                                 </table>

@@ -59,7 +59,7 @@
                                         <!-- Button trigger modal -->
                                         <a class="text-primary mr-2 " href="" data-toggle="modal"
                                             data-target="#exampleModalCenter"><i class="fa solid fa-plus-circle fa-xl">
-                                            </i> <span><b>Approvisionner
+                                            </i> <span><b>Choisissez le fournisseur
                                                 </b>
                                             </span></a>
                                         <a class="text-secondary" href="../page/DetailApprov.php "><i
@@ -146,7 +146,7 @@
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
                                                     <select name="fournisseur" id="fournisseur" class="form-control">
-                                                        <option value="">Choisissez</option>
+                                                        <option value="">Fournisseur</option>
                                                         <?php
                                                     foreach ($all2 as $key2 => $val2) {
 

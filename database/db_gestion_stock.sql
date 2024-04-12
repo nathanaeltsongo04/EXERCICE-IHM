@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 11 avr. 2024 à 00:02
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : ven. 12 avr. 2024 à 10:47
+-- Version du serveur : 10.4.22-MariaDB
+-- Version de PHP : 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -229,7 +229,7 @@ CREATE TABLE `approvisionnement` (
   `id_approvisionnement` int(11) NOT NULL,
   `fournisseur_id` int(11) DEFAULT NULL,
   `date_approvisionnement` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `approvisionnement`
@@ -240,7 +240,8 @@ INSERT INTO `approvisionnement` (`id_approvisionnement`, `fournisseur_id`, `date
 (2, 1, '2024-02-03'),
 (3, 1, '2024-02-07'),
 (4, 4, '2024-02-11'),
-(5, 3, '2024-04-07');
+(5, 3, '2024-04-07'),
+(6, 0, '2024-04-11');
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,7 @@ INSERT INTO `approvisionnement` (`id_approvisionnement`, `fournisseur_id`, `date
 CREATE TABLE `categorieproduit` (
   `id_categorie` int(11) NOT NULL,
   `designation` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `categorieproduit`
@@ -277,18 +278,18 @@ CREATE TABLE `detail_approvisionnement` (
   `produit_id` int(11) NOT NULL,
   `quantite` int(11) DEFAULT NULL,
   `prixu` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `detail_approvisionnement`
 --
 
 INSERT INTO `detail_approvisionnement` (`id_detailApprovisionnement`, `approvisionnement_id`, `produit_id`, `quantite`, `prixu`) VALUES
-(1, 2, 2, 15, 80.00),
-(2, 1, 2, 2, 10.00),
-(3, 2, 2, 10, 1000.00),
-(4, 0, 0, 12, 1000.00),
-(5, 3, 3, 400, 100.00);
+(1, 2, 2, 15, '80.00'),
+(2, 1, 2, 1, '10.00'),
+(3, 2, 2, 10, '1000.00'),
+(4, 0, 0, 12, '1000.00'),
+(5, 3, 3, 400, '100.00');
 
 -- --------------------------------------------------------
 
@@ -302,18 +303,31 @@ CREATE TABLE `detail_vente` (
   `produit_id` int(11) NOT NULL,
   `quantite` int(11) DEFAULT NULL,
   `prixu` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `detail_vente`
 --
 
 INSERT INTO `detail_vente` (`id_detailVente`, `vente_id`, `produit_id`, `quantite`, `prixu`) VALUES
-(1, 2, 2, 4, 7.00),
-(2, 1, 2, 12, 7.00),
-(3, 1, 2, 14, 1000.00),
-(4, 3, 2, 14, 100.00),
-(5, 3, 2, 1, 100.00);
+(1, 2, 2, 4, '7.00'),
+(2, 1, 2, 12, '7.00'),
+(3, 1, 2, 14, '1000.00'),
+(4, 3, 2, 14, '100.00'),
+(5, 3, 2, 1, '100.00');
+
+-- --------------------------------------------------------
+
+--
+-- Doublure de structure pour la vue `fiche_stock`
+-- (Voir ci-dessous la vue réelle)
+--
+CREATE TABLE `fiche_stock` (
+`Produit` varchar(41)
+,`stock_entree` decimal(32,0)
+,`stock_sortie` decimal(32,0)
+,`StockActuel` decimal(33,0)
+);
 
 -- --------------------------------------------------------
 
@@ -328,17 +342,17 @@ CREATE TABLE `mouvementstock` (
   `quantite` int(11) DEFAULT NULL,
   `prixu` decimal(10,2) DEFAULT NULL,
   `dateoperation` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `mouvementstock`
 --
 
 INSERT INTO `mouvementstock` (`id_mouvement`, `produit_id`, `type_operation`, `quantite`, `prixu`, `dateoperation`) VALUES
-(1, 1, 'ENTREE', 10, 6.00, '2024-02-03 00:00:00'),
-(2, 1, 'SORTIE', 4, 6.00, '2024-02-03 00:00:00'),
-(3, 2, 'SORTIE', 1, 2.00, '2024-03-12 00:00:00'),
-(4, 3, 'ENTREE', 400, 100.00, '2024-03-12 00:00:00');
+(1, 1, 'ENTREE', 10, '6.00', '2024-02-03 00:00:00'),
+(2, 1, 'SORTIE', 4, '6.00', '2024-02-03 00:00:00'),
+(3, 2, 'SORTIE', 1, '2.00', '2024-03-12 00:00:00'),
+(4, 3, 'ENTREE', 400, '100.00', '2024-03-12 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -352,19 +366,19 @@ CREATE TABLE `produit` (
   `designation` varchar(20) DEFAULT NULL,
   `quantite` int(11) DEFAULT NULL,
   `prixu` decimal(10,2) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `produit`
 --
 
 INSERT INTO `produit` (`id_produit`, `categorie_id`, `designation`, `quantite`, `prixu`) VALUES
-(1, 1, 'duplicateur', 6, 6.00),
-(2, 2, 'obama', -1, 2.00),
-(3, 1, 'bristole', 401, 99.75),
-(4, 4, 'Bleu', 10, 200.00),
-(5, 4, 'Bleu', 10, 200.00),
-(6, 5, 'A Bille', 40, 100.00);
+(1, 1, 'duplicateur', 6, '6.00'),
+(2, 2, 'obama', 50, '2.00'),
+(3, 1, 'bristole', 401, '99.75'),
+(4, 4, 'Bleu', 10, '200.00'),
+(5, 4, 'Bleu', 10, '200.00'),
+(6, 5, 'A Bille', 40, '100.00');
 
 -- --------------------------------------------------------
 
@@ -378,7 +392,7 @@ CREATE TABLE `tclient` (
   `telephone` varchar(20) DEFAULT NULL,
   `adresse` varchar(100) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tclient`
@@ -394,7 +408,7 @@ INSERT INTO `tclient` (`id_client`, `noms`, `telephone`, `adresse`, `mail`) VALU
 (7, 'Sam MK', '0995566365', 'Goma Ville', 'Mk@gmail.com'),
 (8, 'Ssss', '0821102385', 'Goma', 'Ss@gmail.com'),
 (9, 'Mm', '098', 'Goma Ville', 'Sammk@gmail.com'),
-(10, 'Ss', '0821102385', 'Goma Ville', 'Samuelmbikamboli@gmail.com'),
+(10, 'Lydie Mwashite', '0821102385', 'Goma Ville', 'lydie@gmail.com'),
 (11, 'Sam', '0821102385', 'Goma', 'SamuelMBIKAMBOLI@gmail.com');
 
 -- --------------------------------------------------------
@@ -408,14 +422,16 @@ CREATE TABLE `tcompte` (
   `UTILISATEUR` int(11) DEFAULT NULL,
   `NOMUTILISATEUR` varchar(50) DEFAULT NULL,
   `MOTDEPASSE` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tcompte`
 --
 
 INSERT INTO `tcompte` (`CODECOMPTE`, `UTILISATEUR`, `NOMUTILISATEUR`, `MOTDEPASSE`) VALUES
-(1, 1, 'admin', 'admin');
+(1, 1, 'admin', 'admin'),
+(2, 3, 'Jean', '10'),
+(3, 2, 'Samuel', '10');
 
 -- --------------------------------------------------------
 
@@ -429,7 +445,7 @@ CREATE TABLE `tfournisseur` (
   `telephone` varchar(20) DEFAULT NULL,
   `adresse` varchar(100) DEFAULT NULL,
   `mail` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tfournisseur`
@@ -453,18 +469,16 @@ INSERT INTO `tfournisseur` (`id_fournisseur`, `noms`, `telephone`, `adresse`, `m
 CREATE TABLE `tservice` (
   `CODESERVICE` int(11) NOT NULL,
   `DESIGNATION` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tservice`
 --
 
 INSERT INTO `tservice` (`CODESERVICE`, `DESIGNATION`) VALUES
-(1, 'Administration'),
-(2, 'Facturation'),
-(3, 'Comptabilité'),
-(4, 'Caisse'),
-(5, 'Réception');
+(1, 'Admin'),
+(2, 'Simple User'),
+(3, 'User');
 
 -- --------------------------------------------------------
 
@@ -478,7 +492,7 @@ CREATE TABLE `tutilisateur` (
   `POSTNOM` varchar(50) DEFAULT NULL,
   `PRENOM` varchar(50) DEFAULT NULL,
   `SERVICE` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `tutilisateur`
@@ -486,7 +500,8 @@ CREATE TABLE `tutilisateur` (
 
 INSERT INTO `tutilisateur` (`CODEUTILISATEUR`, `NOM`, `POSTNOM`, `PRENOM`, `SERVICE`) VALUES
 (1, 'Mumbere', 'Tsongo', 'Nathanael', 1),
-(2, 'Samuel', 'Mbikamboli', 'MK', 2);
+(2, 'Samuel', 'Mbikamboli', 'MK', 2),
+(3, 'Jean-Louis', 'Ciza', 'Aganze', 3);
 
 -- --------------------------------------------------------
 
@@ -525,7 +540,7 @@ CREATE TABLE `vdetailapprovisionnement` (
 `id_detailApprovisionnement` int(11)
 ,`fournisseur` varchar(100)
 ,`dateApprovisionnement` date
-,`produit` varchar(20)
+,`produit` varchar(41)
 ,`quantite` int(11)
 ,`prixu` decimal(10,2)
 ,`prix_total` decimal(20,2)
@@ -541,7 +556,7 @@ CREATE TABLE `vdetailvente` (
 `id_detailVente` int(11)
 ,`client` varchar(100)
 ,`datevente` date
-,`produit` varchar(20)
+,`produit` varchar(41)
 ,`quantite` int(11)
 ,`prixu` decimal(10,2)
 ,`prix_total` decimal(20,2)
@@ -557,7 +572,7 @@ CREATE TABLE `vente` (
   `id_vente` int(11) NOT NULL,
   `client_id` int(11) DEFAULT NULL,
   `date_vente` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `vente`
@@ -576,7 +591,7 @@ INSERT INTO `vente` (`id_vente`, `client_id`, `date_vente`) VALUES
 --
 CREATE TABLE `vmouvementstock` (
 `id_mouvement` int(11)
-,`produit` varchar(20)
+,`produit` varchar(41)
 ,`quantite` int(11)
 ,`prixu` decimal(10,2)
 ,`type_operation` enum('ENTREE','SORTIE')
@@ -612,11 +627,20 @@ CREATE TABLE `vvente` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la vue `fiche_stock`
+--
+DROP TABLE IF EXISTS `fiche_stock`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `fiche_stock`  AS SELECT concat(`p`.`categorie`,' ',`p`.`designation`) AS `Produit`, coalesce(sum(case when `t`.`type_operation` = 'ENTREE' then `t`.`quantite` else 0 end),0) AS `stock_entree`, coalesce(sum(case when `t`.`type_operation` = 'SORTIE' then `t`.`quantite` else 0 end),0) AS `stock_sortie`, coalesce(sum(case when `t`.`type_operation` = 'ENTREE' then `t`.`quantite` else 0 end),0) - coalesce(sum(case when `t`.`type_operation` = 'SORTIE' then `t`.`quantite` else 0 end),0) AS `StockActuel` FROM (`vproduit` `p` left join `mouvementstock` `t` on(`p`.`id_produit` = `t`.`produit_id`)) GROUP BY `p`.`designation``designation`  ;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la vue `utilisateurs`
 --
 DROP TABLE IF EXISTS `utilisateurs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `utilisateurs`  AS SELECT `tutilisateur`.`CODEUTILISATEUR` AS `CODEUTILISATEUR`, `tutilisateur`.`NOM` AS `NOM`, `tutilisateur`.`POSTNOM` AS `POSTNOM`, `tutilisateur`.`PRENOM` AS `PRENOM`, `tutilisateur`.`SERVICE` AS `CODESERVICE`, `tservice`.`DESIGNATION` AS `SERVICE` FROM (`tutilisateur` join `tservice` on(`tutilisateur`.`SERVICE` = `tservice`.`CODESERVICE`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `utilisateurs`  AS SELECT `tutilisateur`.`CODEUTILISATEUR` AS `CODEUTILISATEUR`, `tutilisateur`.`NOM` AS `NOM`, `tutilisateur`.`POSTNOM` AS `POSTNOM`, `tutilisateur`.`PRENOM` AS `PRENOM`, `tutilisateur`.`SERVICE` AS `CODESERVICE`, `tservice`.`DESIGNATION` AS `SERVICE` FROM (`tutilisateur` join `tservice` on(`tutilisateur`.`SERVICE` = `tservice`.`CODESERVICE`))  ;
 
 -- --------------------------------------------------------
 
@@ -625,7 +649,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vapprovisionnement`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vapprovisionnement`  AS SELECT `approvisionnement`.`id_approvisionnement` AS `id_approvisionnement`, `tfournisseur`.`noms` AS `fournisseur`, `approvisionnement`.`date_approvisionnement` AS `date_approvisionnement` FROM (`approvisionnement` join `tfournisseur` on(`tfournisseur`.`id_fournisseur` = `approvisionnement`.`fournisseur_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vapprovisionnement`  AS SELECT `approvisionnement`.`id_approvisionnement` AS `id_approvisionnement`, `tfournisseur`.`noms` AS `fournisseur`, `approvisionnement`.`date_approvisionnement` AS `date_approvisionnement` FROM (`approvisionnement` join `tfournisseur` on(`tfournisseur`.`id_fournisseur` = `approvisionnement`.`fournisseur_id`))  ;
 
 -- --------------------------------------------------------
 
@@ -634,7 +658,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vdetailapprovisionnement`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdetailapprovisionnement`  AS SELECT `detail_approvisionnement`.`id_detailApprovisionnement` AS `id_detailApprovisionnement`, `vapprovisionnement`.`fournisseur` AS `fournisseur`, `vapprovisionnement`.`date_approvisionnement` AS `dateApprovisionnement`, `produit`.`designation` AS `produit`, `detail_approvisionnement`.`quantite` AS `quantite`, `detail_approvisionnement`.`prixu` AS `prixu`, `detail_approvisionnement`.`quantite`* `detail_approvisionnement`.`prixu` AS `prix_total` FROM ((`detail_approvisionnement` join `vapprovisionnement` on(`vapprovisionnement`.`id_approvisionnement` = `detail_approvisionnement`.`approvisionnement_id`)) join `produit` on(`produit`.`id_produit` = `detail_approvisionnement`.`produit_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdetailapprovisionnement`  AS SELECT `detail_approvisionnement`.`id_detailApprovisionnement` AS `id_detailApprovisionnement`, `vapprovisionnement`.`fournisseur` AS `fournisseur`, `vapprovisionnement`.`date_approvisionnement` AS `dateApprovisionnement`, concat(`vproduit`.`categorie`,' ',`vproduit`.`designation`) AS `produit`, `detail_approvisionnement`.`quantite` AS `quantite`, `detail_approvisionnement`.`prixu` AS `prixu`, `detail_approvisionnement`.`quantite`* `detail_approvisionnement`.`prixu` AS `prix_total` FROM ((`detail_approvisionnement` join `vapprovisionnement` on(`vapprovisionnement`.`id_approvisionnement` = `detail_approvisionnement`.`approvisionnement_id`)) join `vproduit` on(`vproduit`.`id_produit` = `detail_approvisionnement`.`produit_id`))  ;
 
 -- --------------------------------------------------------
 
@@ -643,7 +667,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vdetailvente`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdetailvente`  AS SELECT `detail_vente`.`id_detailVente` AS `id_detailVente`, `vvente`.`client` AS `client`, `vvente`.`date_vente` AS `datevente`, `produit`.`designation` AS `produit`, `detail_vente`.`quantite` AS `quantite`, `detail_vente`.`prixu` AS `prixu`, `detail_vente`.`quantite`* `detail_vente`.`prixu` AS `prix_total` FROM ((`detail_vente` join `vvente` on(`vvente`.`id_vente` = `detail_vente`.`vente_id`)) join `produit` on(`produit`.`id_produit` = `detail_vente`.`produit_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vdetailvente`  AS SELECT `detail_vente`.`id_detailVente` AS `id_detailVente`, `vvente`.`client` AS `client`, `vvente`.`date_vente` AS `datevente`, concat(`vproduit`.`categorie`,' ',`vproduit`.`designation`) AS `produit`, `detail_vente`.`quantite` AS `quantite`, `detail_vente`.`prixu` AS `prixu`, `detail_vente`.`quantite`* `detail_vente`.`prixu` AS `prix_total` FROM ((`detail_vente` join `vvente` on(`vvente`.`id_vente` = `detail_vente`.`vente_id`)) join `vproduit` on(`vproduit`.`id_produit` = `detail_vente`.`produit_id`))  ;
 
 -- --------------------------------------------------------
 
@@ -652,7 +676,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vmouvementstock`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vmouvementstock`  AS SELECT `mouvementstock`.`id_mouvement` AS `id_mouvement`, `produit`.`designation` AS `produit`, `mouvementstock`.`quantite` AS `quantite`, `mouvementstock`.`prixu` AS `prixu`, `mouvementstock`.`type_operation` AS `type_operation`, `mouvementstock`.`dateoperation` AS `dateoperation` FROM (`mouvementstock` join `produit` on(`produit`.`id_produit` = `mouvementstock`.`produit_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vmouvementstock`  AS SELECT `mouvementstock`.`id_mouvement` AS `id_mouvement`, concat(`vproduit`.`categorie`,' ',`vproduit`.`designation`) AS `produit`, `mouvementstock`.`quantite` AS `quantite`, `mouvementstock`.`prixu` AS `prixu`, `mouvementstock`.`type_operation` AS `type_operation`, `mouvementstock`.`dateoperation` AS `dateoperation` FROM (`mouvementstock` join `vproduit` on(`vproduit`.`id_produit` = `mouvementstock`.`produit_id`))  ;
 
 -- --------------------------------------------------------
 
@@ -661,7 +685,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vproduit`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vproduit`  AS SELECT `produit`.`id_produit` AS `id_produit`, `categorieproduit`.`designation` AS `categorie`, `produit`.`designation` AS `designation`, `produit`.`quantite` AS `quantite`, `produit`.`prixu` AS `prixu` FROM (`produit` join `categorieproduit` on(`categorieproduit`.`id_categorie` = `produit`.`categorie_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vproduit`  AS SELECT `produit`.`id_produit` AS `id_produit`, `categorieproduit`.`designation` AS `categorie`, `produit`.`designation` AS `designation`, `produit`.`quantite` AS `quantite`, `produit`.`prixu` AS `prixu` FROM (`produit` join `categorieproduit` on(`categorieproduit`.`id_categorie` = `produit`.`categorie_id`))  ;
 
 -- --------------------------------------------------------
 
@@ -670,7 +694,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 --
 DROP TABLE IF EXISTS `vvente`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vvente`  AS SELECT `vente`.`id_vente` AS `id_vente`, `tclient`.`noms` AS `client`, `vente`.`date_vente` AS `date_vente` FROM (`vente` join `tclient` on(`tclient`.`id_client` = `vente`.`client_id`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vvente`  AS SELECT `vente`.`id_vente` AS `id_vente`, `tclient`.`noms` AS `client`, `vente`.`date_vente` AS `date_vente` FROM (`vente` join `tclient` on(`tclient`.`id_client` = `vente`.`client_id`))  ;
 
 --
 -- Index pour les tables déchargées
@@ -756,7 +780,7 @@ ALTER TABLE `vente`
 -- AUTO_INCREMENT pour la table `approvisionnement`
 --
 ALTER TABLE `approvisionnement`
-  MODIFY `id_approvisionnement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_approvisionnement` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `categorieproduit`
@@ -798,7 +822,7 @@ ALTER TABLE `tclient`
 -- AUTO_INCREMENT pour la table `tcompte`
 --
 ALTER TABLE `tcompte`
-  MODIFY `CODECOMPTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `CODECOMPTE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `tfournisseur`
@@ -810,13 +834,13 @@ ALTER TABLE `tfournisseur`
 -- AUTO_INCREMENT pour la table `tservice`
 --
 ALTER TABLE `tservice`
-  MODIFY `CODESERVICE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `CODESERVICE` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `tutilisateur`
 --
 ALTER TABLE `tutilisateur`
-  MODIFY `CODEUTILISATEUR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `CODEUTILISATEUR` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `vente`

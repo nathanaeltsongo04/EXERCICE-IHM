@@ -81,7 +81,7 @@ class ClsProduit {
         $con = new db_connection();
         $connect = $con->openconnection();
         try {
-            $stmt = $connect->prepare(" SELECT * FROM produit WHERE id_produit=? ");
+            $stmt = $connect->prepare(" SELECT * FROM vproduit WHERE id_produit=? ");
             $stmt->bindParam(1, $this->CODEPRODUIT, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll();

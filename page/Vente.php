@@ -90,8 +90,7 @@
                                                 <td><?= $val['date_vente'] ?></td>
                                                 <td>
                                                     <span data-id='<?= $val['id_vente'] ?>' class="badge elementinfo"><i class="fa fa-edit fa-xl text-success"></i></span>
-                                                    <span data-id='<?= $val['id_vente'] ?>' class="badge elementinfo"><i class="fa fa-trash-can fa-xl text-danger"></i></span>
-                                                </td>
+                                                    </td>
                                             </tr>
                                         <?php
                                             $numero++;

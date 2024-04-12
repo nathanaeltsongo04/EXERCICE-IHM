@@ -58,8 +58,9 @@
                                     </div>
                                     <div class=" float-right px-4">
                                         <!-- Button trigger modal -->
-                                        <a class="text-primary" data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                class="fa solid fa-plus-circle fa-xl"> </i> <span><b>Ajouter
+                                        <a class="text-primary" href="" data-toggle="modal"
+                                            data-target="#exampleModalCenter"><i class="fa solid fa-plus-circle fa-xl">
+                                            </i> <span><b>Ajouter
                                                     Produit</b>
                                             </span></a>
                                     </div>
@@ -98,11 +99,7 @@
                                                             class="fa fa-edit fa-xl text-success" data-toggle="tooltip"
                                                             data-placement="top"
                                                             title="Modifier cet élément"></i></span>
-                                                    <span data-id='<?= $val['id_produit'] ?>'
-                                                        class="badge elementinfo "><i
-                                                            class="fa fa-trash-can fa-xl text-danger "
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Supprimer cet élément"></i></span>
+                                                    
                                                 </td>
                                             </tr>
                                             <?php
@@ -151,7 +148,7 @@
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
                                                     <select name="categorie" id="categorie" class="form-control">
-                                                        <option value="">Choisissez</option>
+                                                        <option value="">Catégorie</option>
                                                         <?php
                                                     foreach ($all2 as $key2 => $val2) {
                                                         echo "<option value=$val2[id_categorie]>$val2[designation]</option>";
@@ -168,14 +165,16 @@
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" name="quantite" class="form-control"
-                                                        id="quantite" placeholder="Quantité" required>
+                                                    <input type="number" min="0" step="0.01" name="quantite"
+                                                        class="form-control" id="quantite" placeholder="Quantité"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" name="prix" class="form-control" id="prix"
-                                                        placeholder="Prix unitaire" required>
+                                                    <input type="number" min="0" step="0.01" name="prix"
+                                                        class="form-control" id="prix" placeholder="Prix unitaire"
+                                                        required>
                                                 </div>
                                             </div>
                                             <div class="col-md-12 text-center">
@@ -198,7 +197,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Ajouter un produit</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modifier un produit</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

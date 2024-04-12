@@ -9,11 +9,11 @@
     include '../include/head.php';
     require('../database/db_connection.php');
     require('../process/class/ClsDetailVente.php');
-    require('../process/class/ClsVente.php');
+    require('../process/class/ClsClient.php');
     require('../process/class/ClsProduit.php');
 
     $data = new ClsDetailVente();
-    $data2 = new ClsVente();
+    $data2 = new ClsClient();
     $data1 = new ClsProduit();
 
     $all = $data->afficher();
@@ -58,92 +58,125 @@
 
                                 <div class="col col-sm-12">
                                     <div class="card-options d-inline-block">
-                                        <h4><b>Details Ventes</b></h4>
+                                        <h4><b>Facturation</b></h4>
                                     </div>
-                                    <div class=" float-right px-4">
-                                        <!-- Button trigger modal -->
-                                        <a class="text-primary" data-toggle="modal" data-target="#exampleModalCenter"><i
-                                                class="fa solid fa-plus-circle fa-xl"> </i> <span><b>Faire Une
-                                                    Vente</b>
-                                            </span></a>
-                                        <div class="float-right px-4">                                            
-                                            <a class="text-info mr-4" href="../page/Facturation.php"><i class="fa solid fa-file fa-xl"> </i> <span><b>Factures
-                                                </b>
-                                            </span></a>
-                                        </div>
-                                    </div>
-                                </div>                               
-
-
-                            </div>
-                            <div class="card-body">
-                                <div class="container table-responsive">
-                                    <table id="order-table" class="table table-striped  nowrap">
-                                        <thead>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Client</th>
-                                                <th>Date</th>
-                                                <th>Produit</th>
-                                                <th>Quantite</th>
-                                                <th>Prix unitaire</th>
-                                                <th>Prix total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                        $numero = 1;
-                                        foreach ($all as $key => $val) {
-                                            $id = $val['id_detailVente'];
-                                        ?>
-                                            <tr>
-
-                                                <th scope="row"><b><?= $numero ?></b></th>
-                                                <td><b><?= $val['client'] ?></b></td>
-                                                <td><b><?= $val['datevente'] ?></b></td>
-                                                <td><b><?= $val['produit'] ?></b></td>
-                                                <td><b><?= $val['quantite'] ?></b></td>
-                                                <td><b><?= $val['prixu'] ?></b></td>
-                                                <td><b><?= $val['prix_total'] ?></b></td>
-                                                <td><span data-id='<?= $val['id_detailVente'] ?>'
-                                                        class="badge elementinfo "><i
-                                                            class="fa fa-edit fa-xl text-success " data-toggle="tooltip"
-                                                            data-placement="top"
-                                                            title="Modifier cet élément"></i></span>
-                                                    <!-- <span data-id=''
-                                                        class="badge elementinfo "><i
-                                                            class="fa fa-trash-can text-danger fa-xl "
-                                                            data-toggle="tooltip" data-placement="top"
-                                                            title="Supprimer cet élément"></i></span>
-                                                    <a href="../rapports/facture.php?id="
-                                                        data-toggle="tooltip" data-placement="top" title="Imprimer"
-                                                        class="badge"><i class="fa fa-print text-dark fa-xl"></i></a> -->
-                                                </td>
-                                            </tr>
-                                            <?php
-                                            $numero++;
-                                        }
-                                        ?>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <th>#</th>
-                                                <th>Client</th>
-                                                <th>Date</th>
-                                                <th>Produit</th>
-                                                <th>Quantite</th>
-                                                <th>Prix unitaire</th>
-                                                <th>Prix total</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
                                 </div>
+                                <form action="" method="GET">
+                                <div class="row">
+
+                                    <div class="col-md-4 form-group">
+                                        <label for="client">Client</label>
+                                                <select name="client" id="client" class="form-control">
+                                                    <option value="">Client</option>
+                                                    <?php
+                                                    foreach ($all2 as $key2 => $val2) {
+                                                        echo "<option value=$val2[noms]>$val2[noms]</option>";
+                                                    };
+                                                    ?>
+                                                </select>
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <label for="datefin">Date</label>
+                                        <input type="date" id="datefin" name="datefin" class="form-control" value="">
+                                    </div>
+                                    <div class="col-md-4 form-group">
+                                        <button type="submit" class="btn btn-success mt-4 ">
+                                            <i class="fa fa-search"></i> Chercher
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="col text-end">
+                            <?php $lienURL ='../rapports/facturemultiple.php?client='.urlencode(isset($_GET['client'])).'&datefin='.urlencode(isset($_GET['datefin'])).''; 
+                                            ?>
+                                                <a href="<?php echo  $lienURL ?>"
+                                                        data-toggle="tooltip" data-placement="top" title="Imprimer"
+                                                        class="badge btn btn-success float-right "><i class="fa fa-print text-dark fa-xl"></i>Imprimer</a>
+                                            
+                                                        </div>
+
+                        </div>
+                        <div class="col-md-4 form-group">  
+                        
+                            </div>
+                            
+                        <div class="card-body">
+                            <div class="dt-responsive table-responsive">
+                                <table id="order-table" class="table table-striped nowrap">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Client</th>
+                                            <th>Date</th>
+                                            <th>Produit</th>
+                                            <th>Quantite</th>
+                                            <th>Prix unitaire</th>
+                                            <th>Prix total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        if (isset($_GET['client']) && isset($_GET['datefin'])) {
+                                            try {
+                                                // Create a new database connection object
+                                                $pdo = new db_connection();
+
+                                                // Open the connection
+                                                $conn = $pdo->openconnection();
+
+                                                $client = filter_input(INPUT_GET, 'client', FILTER_SANITIZE_STRING); // Sanitize user input
+                                                $datefin = filter_input(INPUT_GET, 'datefin', FILTER_SANITIZE_STRING); // Sanitize user input
+
+                                                $sql = "SELECT * FROM vdetailvente WHERE client = :client AND datevente = :datefin";
+                                                $stmt = $conn->prepare($sql);
+
+                                                $stmt->bindParam(':client', $client, PDO::PARAM_STR);
+                                                $stmt->bindParam(':datefin', $datefin, PDO::PARAM_STR);
+
+                                                $stmt->execute();
+                                                
+                                                $numero = 1;
+                                                while ($row = $stmt->fetch()) {
+                                        ?>
+
+                                                    <tr>
+                                                        <td><?php echo $numero ?></td>
+                                                        <td><?php echo $row['client'] ?></td>
+                                                        <td><?php echo $row['datevente'] ?></td>
+                                                        <td><?php echo $row['produit'] ?></td>
+                                                        <td><?php echo $row['quantite'] ?></td>
+                                                        <td><?php echo $row['prixu'] ?></td>
+                                                        <td><?php echo $row['prix_total'] ?></td>
+                                                        <?php $numero++; ?>
+                                                    </tr>
+
+                                                <?php  }                                               
+                                                
+                                             
+                                            } catch (PDOException $e) {
+                                                echo "Erreur : " . $e->getMessage();
+                                            }
+                                        }
+                                        $pdo->closeconnection();
+                                        ?>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Client</th>
+                                            <th>Date</th>
+                                            <th>Produit</th>
+                                            <th>Quantite</th>
+                                            <th>Prix unitaire</th>
+                                            <th>Prix total</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
                 <?php
             include('../include/footer.php');
             ?>
@@ -193,13 +226,13 @@
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" min="0" step="0.01" class="form-control" placeholder="Quantité"
+                                                    <input type="number" class="form-control" placeholder="Quantité"
                                                         required id="quantite" name="quantite">
                                                 </div>
                                             </div>
                                             <div class=" col-md-6 form-group mt-3 ">
                                                 <div class="input-group has-validation">
-                                                    <input type="number" class="form-control" min="0" step="0.01"
+                                                    <input type="number" class="form-control"
                                                         placeholder="Prix unitaire" required id="prixun" name="prixun">
                                                 </div>
                                             </div>

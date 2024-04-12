@@ -87,11 +87,11 @@
                                                             class="fa fa-edit fa-xl text-success" data-toggle="tooltip"
                                                             data-placement="top"
                                                             title="Modifier cet élément"></i></span>
-                                                    <span data-id='<?= $val['id_client'] ?>'
+                                                    <!-- <span data-id='<?= $val['id_client'] ?>'
                                                         class="badge elementinfo "><i
                                                             class="fa fa-trash-can fa-xl text-danger"
                                                             data-toggle="tooltip" data-placement="top"
-                                                            title="Supprimer cet élément"></i></span>
+                                                            title="Supprimer cet élément"></i></span> -->
                                                 </td>
                                             </tr>
                                             <?php

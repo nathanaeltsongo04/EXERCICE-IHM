@@ -161,6 +161,17 @@ class ClsMouvement{
             return $e->getMessage();
         }
     }
-
+public function fichestock()
+    {
+        $con = new db_connection();
+        $connect = $con->openconnection();
+        try {
+            $stmt = $connect->prepare(" SELECT * FROM fiche_stock");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } catch (Exception $e) {
+            return $e->getMessage();
+        }
+    }
     
 }
